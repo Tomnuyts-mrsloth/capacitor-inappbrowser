@@ -1265,16 +1265,6 @@ fileprivate extension WKWebViewController {
     }
 
     private func tryOpenCustomScheme(_ url: URL) -> Bool {
-//         let app = UIApplication.shared
-// 
-//         if app.canOpenURL(url) {
-//             app.open(url, options: [:], completionHandler: nil)
-//             return true // external app opened -> cancel WebView load
-//         }
-// 
-//         // Cannot open scheme: notify and still block WebView (avoid rendering garbage / errors)
-//         self.capBrowserPlugin?.notifyListeners("pageLoadError", data: [:])
-//         return true
         UIApplication.shared.open(url, options: [:], completionHandler: { [weak self] opened in
             if !opened {
                 self?.capBrowserPlugin?.notifyListeners(
